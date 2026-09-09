@@ -23,6 +23,22 @@
       storyVideos.forEach((video) => {
         video.parentElement?.classList.add("alv-history-frame");
         video.parentElement?.parentElement?.classList.add("alv-history-card");
+
+        // Sem imagem de capa: iniciar pelo próprio vídeo e manter os controles
+        // nativos disponíveis para o visitante ativar o volume.
+        video.removeAttribute("poster");
+        video.controls = true;
+        video.setAttribute("controls", "");
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute("muted", "");
+
+        if (!video.dataset.alvPlaybackReady) {
+          video.dataset.alvPlaybackReady = "true";
+          const startVideo = () => video.play().catch(() => {});
+          video.addEventListener("loadeddata", startVideo, { once: true });
+          startVideo();
+        }
       });
     }
   }
