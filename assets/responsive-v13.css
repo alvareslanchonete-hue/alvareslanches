@@ -1,0 +1,128 @@
+/* Ajustes responsivos preservando o layout aprovado. */
+
+.alv-hero-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: clamp(440px, 50vw, 660px) !important;
+  min-height: 0 !important;
+  max-height: 660px !important;
+  background: #1b100b;
+}
+
+.alv-hero-frame::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -24px;
+  background-image:
+    linear-gradient(rgb(27 16 11 / 42%), rgb(27 16 11 / 42%)),
+    var(--alv-hero-url);
+  background-position: var(--desktop-position, center center);
+  background-size: cover;
+  filter: blur(18px) saturate(.86);
+  transform: scale(1.06);
+}
+
+.alv-hero-image {
+  position: relative;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 1040px !important;
+  margin-inline: auto;
+  object-fit: contain !important;
+  object-position: var(--desktop-position, center center) !important;
+  filter: drop-shadow(0 12px 30px rgb(0 0 0 / 28%));
+}
+
+.alv-history-grid {
+  max-width: 700px !important;
+  align-items: start;
+}
+
+.alv-history-card {
+  width: 100%;
+  max-width: 320px;
+  margin-inline: auto;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 240ms ease, box-shadow 240ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.alv-history-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgb(0 0 0 / 25%);
+}
+
+.alv-history-card:active {
+  transform: scale(.975);
+}
+
+.alv-history-frame {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 9 / 16 !important;
+  overflow: hidden;
+}
+
+.alv-history-frame > video,
+.alv-history-frame > img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 9 / 16 !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 767px) {
+  .alv-hero-frame {
+    height: clamp(410px, 66svh, 560px) !important;
+  }
+
+  .alv-hero-frame::before {
+    display: none;
+  }
+
+  .alv-hero-image {
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: var(--mobile-position, center center) !important;
+    filter: none;
+  }
+
+  #historia {
+    padding-bottom: 5rem !important;
+  }
+
+  .alv-history-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    padding-inline: 0 !important;
+  }
+
+  .alv-history-card {
+    max-width: none;
+    border-radius: 12px;
+  }
+
+  .alv-history-card > div:last-child {
+    min-height: 48px;
+    display: grid;
+    place-items: center;
+    padding: 8px 5px !important;
+  }
+
+  .alv-history-card p {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alv-history-card {
+    transition: none;
+  }
+}

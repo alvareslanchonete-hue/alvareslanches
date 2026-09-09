@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+
+# O roteamento e os cabeçalhos permanecem nos arquivos _redirects e _headers.
+# Não há etapa de build: este repositório contém a versão estática validada.

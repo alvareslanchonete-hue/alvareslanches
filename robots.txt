@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /gestao
+
+Sitemap: https://alvareslanches.netlify.app/sitemap.xml
