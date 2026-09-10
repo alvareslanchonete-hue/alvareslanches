@@ -21,6 +21,28 @@
     });
 
     const story = document.querySelector("#historia");
+    const storySources = [
+      "https://rvhffkbrzzufzutqrhsv.supabase.co/storage/v1/object/public/site-media/1788969499168-video-1-historia.mp4",
+      "https://rvhffkbrzzufzutqrhsv.supabase.co/storage/v1/object/public/site-media/1788969489095-historia--proprietarios.mp4",
+    ];
+    story?.querySelectorAll(":scope .grid > div").forEach((card, index) => {
+      const frame = card.firstElementChild;
+      const cover = frame?.querySelector("img");
+      if (!cover || !storySources[index]) return;
+
+      const video = document.createElement("video");
+      video.className = cover.className;
+      video.autoplay = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      const source = document.createElement("source");
+      source.src = storySources[index];
+      source.type = "video/mp4";
+      video.append(source);
+      cover.replaceWith(video);
+    });
+
     const storyVideos = story?.querySelectorAll("video") || [];
     if (storyVideos.length) {
       const firstCard = storyVideos[0].parentElement?.parentElement;
