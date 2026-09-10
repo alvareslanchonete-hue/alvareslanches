@@ -41,6 +41,21 @@
   align-items: start;
 }
 
+.alv-offer-frame {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.alv-offer-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
 .alv-history-card {
   width: 100%;
   max-width: 320px;
