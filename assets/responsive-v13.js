@@ -15,6 +15,11 @@
       heroFrame.style.setProperty("--mobile-position", mobile);
     }
 
+    document.querySelectorAll("#ofertas img").forEach((image) => {
+      image.parentElement?.classList.add("alv-offer-frame");
+      image.classList.add("alv-offer-image");
+    });
+
     const story = document.querySelector("#historia");
     const storyVideos = story?.querySelectorAll("video") || [];
     if (storyVideos.length) {
